@@ -1,0 +1,59 @@
+<h1>Random Teams!</h1>
+<!--<hr>-->
+
+<div class="row">
+
+  <div class = "col-md-12">
+    
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Ingrese nombre/apodo" (keyup.enter)="addPlayer(nombre);" #nombre/>
+      <button class="btn btn-success" (click)="addPlayer(nombre)">
+        Agregar Jugador
+      </button>
+    </div>
+
+    <table>
+      <tr *ngFor="let jugador of jugadores" style="margin-bottom: 10px;">
+        <td>{{jugador.nombre}}</td> <td><button class="btn btn-danger" (click)="removePlayer(jugador)">Eliminar</button></td>
+      </tr>
+    </table>
+    <br>
+    <button
+      (click)="setRandom(jugadores,team1,team2,i)"
+      type="button"
+      class="btn btn-primary">Armar Equipos
+    </button>
+    <br><br>
+    <button
+      (click)="mostrar = !mostrar"
+      type="button"
+      class="btn btn-primary">Ver Equipos
+    </button>
+    <br><br>
+    <div *ngIf="mostrar" class="card card-inverse card-primary mb-3 text-center">
+      <div class="card-block">
+        <blockquote class="card-blockquote text-white">
+          <p>{{text1}}</p>
+        </blockquote>
+        <ul class="list-group">
+          <li *ngFor="let jugador of team1 let i = index" class="list-group-item">
+            {{i + 1}} - {{jugador.nombre}}
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div *ngIf="mostrar" class="card card-inverse card-primary mb-3 text-center">
+      <div class="card-block">
+        <blockquote class="card-blockquote text-white">
+          <p>{{text2}}</p>
+        </blockquote>
+        <ul class="list-group">
+          <li *ngFor="let jugador of team2 let i = index" class="list-group-item">
+            {{i + 1}} - {{jugador.nombre}}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
